@@ -1,0 +1,10 @@
+const open=()=>new Promise<IDBDatabase>((res,rej)=>{const r=indexedDB.open('geosnap',1);
+r.onupgradeneeded=()=>{for(const s of['photos','history','geo'])r.result.createObjectStore(s,{keyPath:'id'})};
+r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const tx=async<T,>(s:string,m:IDBTransactionMode,f:(o:IDBObjectStore)=>IDBRequest<T>)=>{const d=await open();return new Promise<T>((res,rej)=>{const q=f(d.transaction(s,m).objectStore(s));q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})};
+export const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+export const dbPut=(s:string,v:any)=>tx(s,'readwrite',o=>o.put(v));
+export const dbAll=<T=any,>(s:string)=>tx<T[]>(s,'readonly',o=>o.getAll());
+export const dbGet=<T=any,>(s:string,k:string)=>tx<T>(s,'readonly',o=>o.get(k));
+export const dbDel=(s:string,k:string)=>tx(s,'readwrite',o=>o.delete(k));
+export const dbClear=(s:string)=>tx(s,'readwrite',o=>o.clear());
