@@ -1,95 +1,308 @@
-# GeoSnap
+## 🌐 Deployed Website
 
-Privacy-first GPS map camera that runs in the browser (Android Chrome, iOS Safari, desktop). Built with React, TypeScript, Vite, Tailwind CSS, MapLibre GL JS with OpenFreeMap, Nominatim, IndexedDB and piexifjs. Installable as a PWA. No login, backend or cloud storage.
+**Live Website:** [https://your-deployed-website-url.com](https://your-deployed-website-url.com)
 
-## Run locally
+---
+
+# GPSnapix 📍📸
+
+### Capture • Locate • Remember
+
+GPSnapix is a modern GPS-powered camera application that combines photography with real-time location information. Capture photos with GPS coordinates, addresses, maps, timestamps, and customizable watermarks.
+
+Designed for travellers, explorers, field researchers, photographers, and anyone who wants to remember exactly where a photo was taken.
+
+---
+
+## ✨ Features
+
+### 📸 Smart GPS Camera
+- Live camera preview.
+- Front and rear camera switching.
+- Fast photo capture.
+- Flash and zoom controls where supported.
+- Photo preview, retake, and save.
+- Video recording support.
+- High-quality image capture based on device capabilities.
+
+### 📍 Real-Time GPS Tracking
+- Automatically detect device location.
+- Latitude and longitude.
+- GPS accuracy in metres.
+- Address and locality detection.
+- Altitude, speed, and heading when available.
+- Refresh location.
+- Live location updates.
+
+### 🗺️ GPS Watermark
+
+Add location information directly to captured photos.
+
+Watermark information includes:
+- Location name.
+- Country and flag.
+- Full address.
+- Latitude and longitude.
+- Date and time.
+- Timezone.
+- Custom notes.
+- GPSnapix branding.
+- Map preview with location marker.
+
+### 🎨 Watermark Templates
+- Classic GPS Map
+- Professional GPS
+- Minimal GPS
+- Field Survey
+- Travel Photography
+- Compact GPS
+- Full Location Card
+
+Customize watermark position, size, transparency, text, map dimensions, and visibility.
+
+### 🗺️ Maps
+- MapLibre GL JS.
+- OpenFreeMap integration.
+- Liberty, Positron, Bright, and Dark map styles.
+- Current location marker.
+- Photo location markers.
+- Location history visualization.
+
+### 📚 Location History
+- Automatic location recording while tracking is active.
+- Configurable tracking intervals.
+- Previous location records.
+- Date-based filtering.
+- Search locations.
+- Pause and resume tracking.
+- Delete individual records or clear history.
+
+### 🖼️ Photo Gallery
+- Photo grid.
+- Full-screen photo preview.
+- Original and stamped photos.
+- Location and timestamp details.
+- Search and filters.
+- Individual downloads.
+- Bulk export.
+
+### 💾 Local Storage
+- IndexedDB photo storage.
+- Automatic saving options.
+- Device file saving where supported.
+- No mandatory cloud photo storage.
+- Local data management.
+
+### 📱 Installation
+- Android PWA installation.
+- iPhone Add to Home Screen.
+- Standalone app experience.
+- Capacitor preparation for Android and iOS app-store distribution.
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| React | User interface |
+| TypeScript | Type safety |
+| Vite | Development and build |
+| Tailwind CSS | Styling |
+| MapLibre GL JS | Interactive maps |
+| OpenFreeMap | Map tiles |
+| Geolocation API | Device location |
+| MediaDevices API | Camera access |
+| Canvas API | Watermark rendering |
+| IndexedDB | Local data storage |
+| MediaRecorder API | Video recording |
+| PWA | Web app installation |
+| Capacitor | Native app packaging |
+
+---
+
+## 📂 Project Structure
+
+```text
+GPSnapix/
+├── public/
+│   ├── icons/
+│   ├── manifest.json
+│   └── service-worker.js
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   │   ├── CameraPage.tsx
+│   │   ├── GalleryPage.tsx
+│   │   ├── LocationPage.tsx
+│   │   └── SettingsPage.tsx
+│   │
+│   ├── camera/
+│   ├── gps/
+│   ├── maps/
+│   ├── watermark/
+│   ├── metadata/
+│   ├── storage/
+│   ├── gallery/
+│   ├── hooks/
+│   ├── services/
+│   ├── types/
+│   ├── utils/
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Install:
+- Node.js (LTS version recommended).
+- npm.
+- Git.
+- VS Code or another code editor.
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### 2. Open the project
+
+```bash
+cd GPSnapix
+```
+
+### 3. Install dependencies
+
+```bash
 npm install
+```
+
+### 4. Start development server
+
+```bash
 npm run dev
 ```
-Camera and GPS need HTTPS or localhost.
 
-## Build
-```
+Open the local URL displayed in your terminal.
+
+### 5. Build for production
+
+```bash
 npm run build
+```
+
+### 6. Preview production build
+
+```bash
 npm run preview
 ```
-Output goes to `dist/`.
 
-## Deploy on Vercel
-1. Push the project to a GitHub repo (do not commit `node_modules` or `dist`).
-2. On vercel.com choose Add New > Project and import the repo.
-3. Vercel detects Vite. Build command `npm run build`, output directory `dist`.
-4. Click Deploy.
+The production files will be generated in the `dist` directory.
 
-CLI alternative:
-```
-npm i -g vercel
-vercel --prod
-```
-Netlify and GitHub Pages also work, as long as the site is served over HTTPS.
+---
 
-## Install on a phone
-- Android Chrome: open the site, then menu > Install app.
-- iPhone/iPad: open in Safari, then Share > Add to Home Screen.
-Allow Camera and Location when asked.
+## 📱 Installation
 
-## Features
-- Automatic GPS on launch, independent of the camera. Old fixes are labelled "last known". Clear message and steps if permission is denied.
-- Reverse geocoding with Nominatim: cached locally, throttled, with a coordinates-only fallback.
-- Automatic location history in IndexedDB: interval (10 s, 30 s, 1 min, 5 min), duplicate skipping, pause/resume, search, date filter, delete, clear all, map markers.
-- Real camera: front/rear, torch and zoom where supported, up to 8K requested, full-resolution capture via ImageCapture where available, photo preview, retake and save, video recording.
-- Watermark card drawn on canvas with a real square OpenFreeMap map, red marker, attribution, address, coordinates, date, time, time zone and custom note.
-- GPS EXIF written to JPEGs and verified before saving; can be turned off in Settings.
-- Local gallery with search and sort, full-screen view, download and delete.
-- Saving: IndexedDB, optional folder (File System Access API), download fallback. Auto-save original and stamped photos are independent options.
-- Settings: theme, photo quality, map style (Liberty, Positron, Bright, Dark), logo, stamp position, size, opacity, note, EXIF, storage, clear data.
-- PWA: manifest, service worker, app shell caching.
+### Android
 
-## Not yet implemented
-- Watermark templates 2 to 7 (only the default card exists)
-- GPS watermark on recorded video
-- Gallery multi-select and bulk download
-- QR detection, volume button and screen tap actions, language selection
-- How to Use, About, Permissions Guide and Support pages (Privacy summary only)
-- Video quality selector and camera focus control
-- Bottom toolbar items Preview, Default and Template
+1. Open the deployed GPSnapix website in Chrome.
+2. Select Install App or Add to Home Screen.
+3. Confirm installation.
+4. Open GPSnapix from your home screen.
 
-## Limits
-- Image size is limited by the device camera and browser. Nothing is upscaled, so 8K only appears where the hardware and browser provide it.
-- OpenFreeMap serves vector street maps, not satellite imagery. The style list in `src/maps/styles.ts` can take a future satellite provider.
-- Address lookup and new map tiles need internet. Photos, history and the gallery work offline. There are no offline maps.
-- Location history records only while the app is open. It does not track after the browser is closed or the device sleeps.
+### iPhone
 
-### iPhone / iPad (Safari)
-- No flash, because Safari does not allow torch control (the button is disabled).
-- No folder picker. Photos download as files, so use Share > Save to Photos.
-- Photos use the live preview frame size, not full sensor resolution, so 8K is not available.
-- Video records as MP4. Tracking pauses when the app is in the background or the screen locks.
-- Canvas stamping needs iOS 16 or later.
-- If location is blocked: Settings > Privacy & Security > Location Services > Safari Websites.
+1. Open GPSnapix in Safari.
+2. Tap the Share icon.
+3. Select Add to Home Screen.
+4. Tap Add.
+5. Open GPSnapix from your home screen.
 
-## Privacy
-Nothing is uploaded. Photos and location history stay in your browser storage. Third-party requests:
-- Nominatim (OpenStreetMap) receives coordinates for address lookup.
-- OpenFreeMap serves map tiles and sees the tile areas requested.
+### Native App Distribution
 
-Use Settings > Clear local data to delete everything.
+Capacitor can be used to prepare Android and iOS packages.
 
-## Project structure
-```
-src/
-  App.tsx, main.tsx
-  camera/      camera access, capture
-  gps/         GPS watching, history recording
-  maps/        map styles
-  watermark/   map snapshot and stamp rendering
-  metadata/    EXIF GPS
-  services/    IndexedDB, geocoding, file saving
+App Store and Google Play publication require their respective developer accounts, build processes, and review approvals.
+
+---
+
+## 🌐 Deployment
+
+GPSnapix can be deployed using Vercel.
+
+1. Push the source code to GitHub.
+2. Sign in to Vercel.
+3. Import the GPSnapix repository.
+4. Select Vite as the framework.
+5. Configure:
+
+```text
+Framework: Vite
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
 ```
 
-## Testing checklist
-Test on a real Android phone, an iPhone and desktop: rear and front camera, capture, flash, zoom, video; GPS on launch, permission denied, GPS unavailable, history; map style switching and watermark map; photo size, EXIF GPS, local saving and gallery after reload; settings persistence.
+6. Deploy the project.
 
-## Attribution
-Maps © OpenFreeMap, © OpenStreetMap contributors. Address data from OpenStreetMap Nominatim.
+**Important:** Use HTTPS for camera and GPS permissions.
+
+---
+
+## 🔐 Privacy
+
+GPSnapix is designed with local-first data storage.
+
+- No mandatory account.
+- No automatic cloud photo uploads.
+- Photos stored locally by default.
+- GPS permissions requested separately.
+- Users can delete their local data.
+- Map and geocoding providers may receive requests needed to provide their services.
+
+Location tracking is subject to browser background restrictions. Continuous tracking cannot be guaranteed when the browser is suspended or closed.
+
+---
+
+## ⚠️ Important Technical Notes
+
+- GPS accuracy depends on the device and environment.
+- Camera resolution depends on hardware and browser support.
+- Native 8K capture is available only when supported by the camera.
+- OpenFreeMap provides vector maps, not satellite imagery.
+- Satellite imagery requires a compatible imagery provider.
+- Reverse geocoding generally requires an internet connection.
+- EXIF metadata support depends on the image format and implementation.
+- File System Access API support varies by browser.
+- iOS and Android browser capabilities differ.
+
+Do not use simulated GPS data or fake resolution information in production.
+
+---
+
+## 🎯 Project Goal
+
+Build GPSnapix into a reliable, easy-to-use GPS camera application that makes it simple to capture photos, preserve location information, and organize memories geographically.
+
+**GPSnapix — Every Photo Has a Place.**
+
+---
+
+## License
+
+Choose and add an appropriate open-source or proprietary license before publishing this repository.
+
+## Project Status
+
+Development in progress.
