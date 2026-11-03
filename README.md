@@ -1,6 +1,6 @@
 ## 🌐 Deployed Website
 
-**Live Website:** [https://your-deployed-website-url.com](https://your-deployed-website-url.com)
+**Live Website:** [https://gpsnapix.vercel.app/](https://gpsnapix.vercel.app/)
 
 ---
 
